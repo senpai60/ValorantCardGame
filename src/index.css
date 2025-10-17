@@ -1,1 +1,13 @@
-@import 'tailwindcss'
+@import url('./fonts/valorant.css');
+@import 'tailwindcss';
+
+.valo-font {
+    font-family: 'VALORANT';
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+    font-family: 'VALORANT';
+    font-weight: normal;
+    font-style: normal;
+}
