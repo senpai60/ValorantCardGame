@@ -3,6 +3,7 @@ import AgentCard from "./components/AgentCard";
 import AllCards from "../data/AllCards";
 import ShuffleCard from "./GameProccess/ShuffleCard";
 import "./index.css";
+import UpdatedAgentCard from "./components/UpdatedAgentCard";
 
 // ===================================================================================
 // --- DECORATIVE ICONS (SVG) ---
@@ -256,8 +257,8 @@ function App() {
   const aiCurrentCard = aiCards[0];
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white py-4">
-      <div className="player-ai flex items-center justify-between w-full fixed z-[999] p-[20px] bg-gray-900/80 backdrop-blur-sm top-0 left-0">
+    <div className="min-h-screen bg-zinc-950 text-white pt-4">
+      <div className="player-ai flex items-center justify-between w-full fixed z-[999] p-[20px] bg-zinc-950/80 backdrop-blur-sm top-0 left-0">
         <div className="text-blue-400">
           <strong className="text-xl">PLAYER CARDS: {playerCards.length}</strong>
         </div>
@@ -276,7 +277,8 @@ function App() {
         {isMusicPlaying ? <UnmuteIcon /> : <MuteIcon />}
       </button>
 
-      <main className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-20">
+      {/* <main className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-20">
+        
         <AgentCard
           key={playerCurrentCard.uuid}
           agent={playerCurrentCard}
@@ -288,6 +290,28 @@ function App() {
           isLoser={gameState === 'round-end' && roundResult === 'AI Wins'}
         />
         <AgentCard
+          key={aiCurrentCard.uuid}
+          agent={aiCurrentCard}
+          isPlayerCard={false}
+          selectedStat={selectedStat}
+          showStats={gameState === 'round-end'}
+          isWinner={gameState === 'round-end' && roundResult === 'AI Wins'}
+          isLoser={gameState === 'round-end' && roundResult === 'Player Wins'}
+        />
+        
+      </main> */}
+      <main className="flex flex-col justify-center items-center w-full bg-zinc-950 gap-10 px-5 my-25">
+        <UpdatedAgentCard 
+          key={playerCurrentCard.uuid}
+          agent={playerCurrentCard}
+          isPlayerCard={true}
+          onStatSelect={handleStatSelect}
+          selectedStat={selectedStat}
+          showStats={true}
+          isWinner={gameState === 'round-end' && roundResult === 'Player Wins'}
+          isLoser={gameState === 'round-end' && roundResult === 'AI Wins'}
+        />
+        <UpdatedAgentCard 
           key={aiCurrentCard.uuid}
           agent={aiCurrentCard}
           isPlayerCard={false}
